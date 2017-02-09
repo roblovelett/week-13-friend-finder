@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>Survey Questions</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -131,7 +131,7 @@
         </footer>
     </div>
     <!-- Modal -->
-    <div id="resultsModal" class="modal fade" role="dialog">
+    <div id="modal-results" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -140,8 +140,8 @@
                     <h2 class="modal-title"><strong>Best Match</strong></h2>
                 </div>
                 <div class="modal-body">
-                    <h2 id="matchName"></h2>
-                    <img id="matchImg" src="" alt="" />
+                    <h2 id="match-name"></h2>
+                    <img id="match-img" src="" alt="" />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -152,27 +152,4 @@
 </body>
 
 </html>
-<script type="text/javascript">
-    $("#submit").on("click", function() {
-        var friend = { //get form inputs
-            name: $("#name").val().trim(), //get name input
-            photo: $("#photo").val().trim(), //get photo url input
-            scores: [] //init      
-        };
-        for (i = 0; i < 10; i++) {
-            var score = $("#q" + i).val();
-            friend.scores.push(parseInt(score));
-        };
-        var url = window.location.origin; //get root page url
-        $.post(url + "/api/friends", friend, function(data) { //jquery ajax callback
-            var match = {
-                txt: "You match witch " + data.name,
-                img: "<img src=\"" + data.photo + "\">" 
-            };
-            modal(match);
-            $('#name').val(""); //clear inputs
-            $('#photo').val("");
-        });
-        event.preventDefault();
-    });
-</script>
+<script type="text/javascript" src="../data/submitFriend.js"></script>
