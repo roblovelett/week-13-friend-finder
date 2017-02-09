@@ -6,7 +6,7 @@ var bodyParser = require("body-parser");
 var express = require("express");
 
 var app = express(); // create express server
-var port = process.env.port || 8000;
+var PORT = process.env.PORT || 8000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -21,5 +21,5 @@ require("./app/routing/apiRoutes.js")(app);
 require("./app/routing/htmlRoutes.js")(app);
 
 app.listen(PORT, function () {
-	console.log("listening on port: " + port);
+	console.log("Listening on port: " + PORT);
 });
