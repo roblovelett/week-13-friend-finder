@@ -153,19 +153,26 @@
 
 </html>
 <script type="text/javascript">
-// In this code below we create the Front-end Javascript which "POSTS" our form data to our express server.
-// In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
-// Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
-// In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file 
-$("#submit").on("click", function() {
-    var friend = { //get form inputs
-        name: $("#name").val().trim(), //get name input
-        photo: $("#name").val().trim(), //get photo url input
-        scores: [] //init      
-    };
-    for (i = 0; i < 10; i++) {
-        var score = $("#q" + i).val();
-        friend.scores.push(parseInt(score));
-    };
-});
+    $("#submit").on("click", function() {
+        var friend = { //get form inputs
+            name: $("#name").val().trim(), //get name input
+            photo: $("#photo").val().trim(), //get photo url input
+            scores: [] //init      
+        };
+        for (i = 0; i < 10; i++) {
+            var score = $("#q" + i).val();
+            friend.scores.push(parseInt(score));
+        };
+        var url = window.location.origin; //get root page url
+        $.post(url + "/api/friends", friend, function(data) { //jquery ajax callback
+            var match = {
+                txt: "You match witch " + data.name,
+                img: "<img src=\"" + data.photo + "\">" 
+            };
+            modal(match);
+            $('#name').val(""); //clear inputs
+            $('#photo').val("");
+        });
+        event.preventDefault();
+    });
 </script>
