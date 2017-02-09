@@ -7,13 +7,13 @@
 
 var friends = [{
         name: "Rob",
-        photo: "http://lorempixel.com/340/340/",
-        scores: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1],
+        photo: "https://lorempixel.com/340/340/",
+        scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
     {
         name: "Mike",
-        photo: "http://lorempixel.com/340/340/",
-        scores: [4, 2, 2, 1, 1, 1, 1, 1, 5, 5],
+        photo: "https://lorempixel.com/340/340/",
+        scores: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
     }
 ];
 

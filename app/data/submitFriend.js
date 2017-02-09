@@ -11,7 +11,7 @@ $("#submit").on("click", function () {
     var url = window.location.origin; //get root page url
     $.post(url + "/api/friends", friend, function (data) { //jquery ajax callback
         var match = {
-            txt: "You match witch " + data.name,
+            txt: "You match with " + data.name,
             img: "<img src=\"" + data.photo + "\">"
         };
         modal(match);
@@ -22,6 +22,9 @@ $("#submit").on("click", function () {
 });
 
 function modal(data) {
+    /* Once you've found the current user's most compatible friend, display the
+    result as a modal pop-up. * The modal should display both the name and picture
+    of the closest match. */
     $("#match-name").text(data.txt);
     $("#match-img").html(data.img);
     $("#match-results").show(800, function () {
