@@ -8,12 +8,14 @@ module.exports = function (app) { //Your `apiRoutes.js` file should contain two 
     });
     // A POST routes `/api/friends`. This will be used to handle incoming survey results, compare, store, and send back match. 
     app.post("/api/friends", function (req, res) {
+        console.log("post request received.\n");
         /* Determine the user's most compatible friend using the following as a guide: *
         Convert each user's results into a simple array of numbers (ex: `[5, 1, 4, 4,
         5, 1, 2, 5, 4, 1]`).*/
         var maxDifference = 50; //maximum allowed difference between users. 5 points per 10 questions (5 * 10 = 50)
         var matchedFriend; //empty friend object to send back
         var currentFriend = req.body; //set post request object to currentFriend
+        console.log("current friend: " + currentFriend + "\n");
         friends.forEach(function (friend) { //scan each friend object in friends.js
             var difference = 0; //init
             for (i = 0; i < friend.scores.length; i++) {

@@ -122,7 +122,7 @@
         <br />
         <br />
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="submit" data-toggle="modal" data-target="#match-results"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit</button>
         <hr />
         <footer class="footer">
             <div class="container">
@@ -131,7 +131,7 @@
         </footer>
     </div>
     <!-- Modal -->
-    <div id="modal-results" class="modal fade" role="dialog">
+    <div id="match-results" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -164,6 +164,7 @@
             friend.scores.push(parseInt(score));
         };
         var url = window.location.origin; //get root page url
+        console.log("posting friend to api/friends\n friend: " + friend + "\n");
         $.post(url + "/api/friends", friend, function (data) { //jquery ajax callback
             var match = {
                 txt: "You match with " + data.name,
